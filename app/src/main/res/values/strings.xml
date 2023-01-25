@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JrGeneratorAndroid</string>
+    <string name="hide">Oculta</string>
+    <string name="show">Muestra</string>
 </resources>
