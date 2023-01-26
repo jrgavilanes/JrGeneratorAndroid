@@ -13,15 +13,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUI()
+        setObservers()
+        setListeners()
     }
 
-    private fun setUI() {
+    private fun setObservers() {
+        mainActivityViewModel.num.observe(this) {
+            binding.totalSuma.text = it.toString()
+        }
+    }
+
+    private fun setListeners() {
         binding.apply {
-            totalSuma.text = mainActivityViewModel.numero.toString()
             btnSuma5.setOnClickListener {
-                mainActivityViewModel.numero += 5
-                totalSuma.text = mainActivityViewModel.numero.toString()
+                mainActivityViewModel.increaseNum(5)
             }
         }
     }
