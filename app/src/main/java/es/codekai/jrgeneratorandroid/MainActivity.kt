@@ -12,22 +12,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.viewModel = mainActivityViewModel
+        binding.lifecycleOwner = this
         setContentView(binding.root)
-        setObservers()
-        setListeners()
+//        Esto está en el XML
+//        setObservers()
+//        setListeners()
     }
 
-    private fun setObservers() {
-        mainActivityViewModel.num.observe(this) {
-            binding.totalSuma.text = it.toString()
-        }
-    }
-
-    private fun setListeners() {
-        binding.apply {
-            btnSuma5.setOnClickListener {
-                mainActivityViewModel.increaseNum(5)
-            }
-        }
-    }
+//    private fun setObservers() {
+//        mainActivityViewModel.num.observe(this) {
+//            binding.totalSuma.text = it.toString()
+//        }
+//    }
+//
+//    private fun setListeners() {
+//        binding.apply {
+//            btnSuma5.setOnClickListener {
+//                mainActivityViewModel.increaseNum(5)
+//            }
+//        }
+//    }
 }
