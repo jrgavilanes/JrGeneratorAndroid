@@ -13,6 +13,7 @@ import es.codekai.jrgeneratorandroid.databinding.FragmentNameBinding
 
 class NameFragment : Fragment() {
     private lateinit var binding: FragmentNameBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -11,6 +11,7 @@ import es.codekai.jrgeneratorandroid.databinding.FragmentTermsBinding
 
 class TermsFragment : Fragment() {
     private lateinit var binding: FragmentTermsBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
