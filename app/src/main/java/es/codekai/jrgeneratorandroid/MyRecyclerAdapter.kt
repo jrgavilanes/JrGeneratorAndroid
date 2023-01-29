@@ -12,6 +12,7 @@ class MyRecyclerAdapter : ListAdapter<Terremoto, MyRecyclerAdapter.MyRecyclerVie
         viewType: Int
     ): MyRecyclerAdapter.MyRecyclerViewHolder {
         // todo captiulo 53. minuto 3:29
+        // https://www.udemy.com/course/android-completo-con-kotlin/learn/lecture/21491402#overview
     }
 
     override fun onBindViewHolder(holder: MyRecyclerAdapter.MyRecyclerViewHolder, position: Int){
