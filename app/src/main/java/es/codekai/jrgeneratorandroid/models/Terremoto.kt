@@ -1,4 +1,4 @@
-package es.codekai.jrgeneratorandroid
+package es.codekai.jrgeneratorandroid.models
 
 data class Terremoto(
     val id: String,

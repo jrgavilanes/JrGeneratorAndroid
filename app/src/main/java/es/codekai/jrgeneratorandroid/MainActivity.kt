@@ -1,12 +1,17 @@
 package es.codekai.jrgeneratorandroid
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import es.codekai.jrgeneratorandroid.databinding.ActivityMainBinding
+import es.codekai.jrgeneratorandroid.helpers.Helpers
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: MyRecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -16,36 +21,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUI() {
         binding.apply {
-            val adapter = MyRecyclerAdapter()
-            myRecycler.layoutManager = LinearLayoutManager(this@MainActivity)
-            myRecycler.adapter = adapter
-            adapter.submitList(terremotosProvider())
+            val terremotos = Helpers.terremotosProvider()
+            if (terremotos.isEmpty()) {
+                txtNoData.visibility = View.VISIBLE
+            } else {
+                txtNoData.visibility = View.GONE
+                adapter = MyRecyclerAdapter()
+                adapter.submitList(terremotos)
+                adapter.onItemClickListener = { terremoto ->
+                    Toast.makeText(
+                        this@MainActivity,
+                        "has pinchado ${terremoto.lugar}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                myRecycler.layoutManager = LinearLayoutManager(this@MainActivity)
+                myRecycler.adapter = adapter
+            }
         }
-    }
-
-    private fun terremotosProvider(): List<Terremoto> {
-        val terremotos = mutableListOf<Terremoto>()
-        terremotos.add(Terremoto("1", "Valencia", "5.4", 1234L, -380.2, 6.21))
-        terremotos.add(Terremoto("2", "Madrid", "6.4", 1235L, -280.2, 33.21))
-        terremotos.add(Terremoto("3", "Barcelona", "7.4", 1236L, -180.2, 23.21))
-        terremotos.add(Terremoto("4", "Sevilla", "8.4", 1237L, -480.2, 213.21))
-        terremotos.add(Terremoto("5", "León", "4.4", 1238L, -780.2, 23.2451))
-        terremotos.add(Terremoto("1", "Valencia", "5.4", 1234L, -380.2, 6.21))
-        terremotos.add(Terremoto("2", "Madrid", "6.4", 1235L, -280.2, 33.21))
-        terremotos.add(Terremoto("3", "Barcelona", "7.4", 1236L, -180.2, 23.21))
-        terremotos.add(Terremoto("4", "Sevilla", "8.4", 1237L, -480.2, 213.21))
-        terremotos.add(Terremoto("5", "León", "4.4", 1238L, -780.2, 23.2451))
-        terremotos.add(Terremoto("1", "Valencia", "5.4", 1234L, -380.2, 6.21))
-        terremotos.add(Terremoto("2", "Madrid", "6.4", 1235L, -280.2, 33.21))
-        terremotos.add(Terremoto("3", "Barcelona", "7.4", 1236L, -180.2, 23.21))
-        terremotos.add(Terremoto("4", "Sevilla", "8.4", 1237L, -480.2, 213.21))
-        terremotos.add(Terremoto("5", "León", "4.4", 1238L, -780.2, 23.2451))
-        terremotos.add(Terremoto("1", "Valencia", "5.4", 1234L, -380.2, 6.21))
-        terremotos.add(Terremoto("2", "Madrid", "6.4", 1235L, -280.2, 33.21))
-        terremotos.add(Terremoto("3", "Barcelona", "7.4", 1236L, -180.2, 23.21))
-        terremotos.add(Terremoto("4", "Sevilla", "8.4", 1237L, -480.2, 213.21))
-        terremotos.add(Terremoto("5", "León", "4.4", 1238L, -780.2, 23.2451))
-
-        return terremotos
     }
 }

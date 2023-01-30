@@ -7,9 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import es.codekai.jrgeneratorandroid.models.Terremoto
 
 class MyRecyclerAdapter :
     ListAdapter<Terremoto, MyRecyclerAdapter.MyRecyclerViewHolder>(DiffCallback) {
+
+    lateinit var onItemClickListener: (Terremoto) -> Unit
 
     companion object DiffCallback : DiffUtil.ItemCallback<Terremoto>() {
         override fun areItemsTheSame(oldItem: Terremoto, newItem: Terremoto): Boolean {
@@ -33,9 +36,12 @@ class MyRecyclerAdapter :
         val terremoto = getItem(position)
         holder.magnitude.text = terremoto.magnitud
         holder.location.text = terremoto.lugar
+        holder.location.setOnClickListener {
+            onItemClickListener(terremoto)
+        }
     }
 
-    inner class MyRecyclerViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class MyRecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val magnitude = view.findViewById<TextView>(R.id.txtMagnitude)
         val location = view.findViewById<TextView>(R.id.txtLocation)
     }
