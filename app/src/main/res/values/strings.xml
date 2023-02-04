@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MegaXat</string>
+    <string name="app_name">EL ADIVINO 👻</string>
+    <string name="ask_anything">Pregunta lo que quieras 👩🏼‍🎓</string>
+    <string name="what_do_you_want_to_know">¿Qué quieres saber?</string>
+    <string name="ask">Preguntar</string>
+    <string name="ask_your_question">Escribe tu pregunta</string>
 </resources>

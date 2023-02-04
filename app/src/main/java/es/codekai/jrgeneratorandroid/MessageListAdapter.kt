@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import es.codekai.jrgeneratorandroid.databinding.MessageItemBinding
+import es.codekai.jrgeneratorandroid.helpers.ME
+import es.codekai.jrgeneratorandroid.models.Message
 
-class MessageHolder(val binding: MessageItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class MessageHolder(private val binding: MessageItemBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(message: Message, onclickListener: (Message) -> Unit) {
         binding.txtMessage.text = message.message
-        if (message.author == "yo") {
+        if (message.author == ME) {
             binding.txtMessage.gravity = Gravity.START
         } else {
             binding.txtMessage.gravity = Gravity.END
