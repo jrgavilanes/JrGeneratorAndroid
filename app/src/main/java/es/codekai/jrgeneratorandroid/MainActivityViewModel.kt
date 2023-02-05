@@ -1,12 +1,16 @@
 package es.codekai.jrgeneratorandroid
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import es.codekai.jrgeneratorandroid.helpers.BOT
 import es.codekai.jrgeneratorandroid.models.Message
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 class MainActivityViewModel : ViewModel() {
@@ -37,11 +41,23 @@ class MainActivityViewModel : ViewModel() {
         _messages.value = aux
     }
 
-    fun getBootResponse() {
+    private suspend fun getResponse(): String {
+        delay(Random.nextLong(1000, 3000))
+        return responses.random()
+    }
+
+    fun getBotResponse() {
         viewModelScope.launch {
+            Log.d("janrax", "ejecutando hilo ${Thread.currentThread().name}")
             _loading.value = true
-            delay(Random.nextLong(1000, 3000))
-            sendMessage(Message(message = responses.random(), author = "BOT"))
+
+            var response: String
+            withContext(Dispatchers.IO) {
+                Log.d("janrax2", "ejecutando hilo ${Thread.currentThread().name}")
+                response = getResponse()
+            }
+
+            sendMessage(Message(message = response, author = BOT))
             _loading.value = false
         }
     }

@@ -6,6 +6,7 @@ import android.view.inputmethod.InputMethodManager
 
 // Constants
 const val ME = "me"
+const val BOT = "bot"
 
 // Extensions
 fun View.hideKeyboard() {

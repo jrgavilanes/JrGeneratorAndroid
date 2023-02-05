@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     )
                     binding.edMessage.setText("")
                     binding.root.hideKeyboard()
-                    viewModel.getBootResponse()
+                    viewModel.getBotResponse()
                 } else {
                     Toast.makeText(this@MainActivity, getString(R.string.ask_your_question), Toast.LENGTH_SHORT)
                         .show()
