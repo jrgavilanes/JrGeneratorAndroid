@@ -1,6 +1,7 @@
-package es.codekai.jrgeneratorandroid
+package es.codekai.jrgeneratorandroid.presentation
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import es.codekai.jrgeneratorandroid.databinding.ActivityMainBinding
@@ -24,6 +25,16 @@ class MainActivity : AppCompatActivity() {
                 tvQuote.text = quote.quote
             }
         }
+
+        viewModel.isLoading.observe(this) { isLoading ->
+            binding.apply {
+                if (isLoading) {
+                    progress.visibility = View.VISIBLE
+                } else {
+                    progress.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun setUI() {
@@ -32,5 +43,6 @@ class MainActivity : AppCompatActivity() {
                 viewModel.randomQuote()
             }
         }
+        viewModel.onCreate()
     }
 }
