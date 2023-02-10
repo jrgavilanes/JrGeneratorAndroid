@@ -2,10 +2,12 @@ package es.codekai.jrgeneratorandroid.domain
 
 import es.codekai.jrgeneratorandroid.data.model.QuoteModel
 import es.codekai.jrgeneratorandroid.data.model.QuoteProvider
+import javax.inject.Inject
 
-class GetRandomQuoteUseCase {
+class GetRandomQuoteUseCase @Inject constructor(private val quoteProvider: QuoteProvider) {
     suspend operator fun invoke(): QuoteModel {
-        val x = (QuoteProvider.quotes.indices).random()
-        return QuoteProvider.quotes[x]
+        val quotes = quoteProvider.quotes
+        val randomQuote = (quotes.indices).random()
+        return quotes[randomQuote]
     }
 }
