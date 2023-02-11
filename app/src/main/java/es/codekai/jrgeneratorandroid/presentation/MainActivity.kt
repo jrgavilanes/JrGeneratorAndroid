@@ -2,9 +2,11 @@ package es.codekai.jrgeneratorandroid.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
+import es.codekai.jrgeneratorandroid.R
 import es.codekai.jrgeneratorandroid.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
@@ -34,6 +36,18 @@ class MainActivity : AppCompatActivity() {
                     progress.visibility = View.VISIBLE
                 } else {
                     progress.visibility = View.GONE
+                }
+            }
+        }
+
+        viewModel.error.observe(this) { error ->
+            when (error) {
+                R.string.no_quotes -> {
+                    Toast.makeText(this, getString(R.string.no_quotes), Toast.LENGTH_LONG).show()
+                    binding.apply {
+                        tvQuote.text = getString(R.string.no_quotes)
+                        tvAuthor.text = getString(R.string.check_your_internet_connection)
+                    }
                 }
             }
         }

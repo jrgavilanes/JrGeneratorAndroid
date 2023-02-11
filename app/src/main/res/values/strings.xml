@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JrGeneratorAndroid</string>
+    <string name="no_quotes">No he podido recuperar citas de Internet y no tengo ninguna en caché</string>
+    <string name="check_your_internet_connection">Revisa tu conexión a Internet</string>
 </resources>
