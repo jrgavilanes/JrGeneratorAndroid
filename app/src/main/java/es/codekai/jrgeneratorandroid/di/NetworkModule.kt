@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import es.codekai.jrgeneratorandroid.data.network.QuoteApiClient
+import es.codekai.jrgeneratorandroid.data.ws.network.QuoteApiClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

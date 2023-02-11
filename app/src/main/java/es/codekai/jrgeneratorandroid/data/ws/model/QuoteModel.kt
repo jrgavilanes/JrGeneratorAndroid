@@ -1,4 +1,4 @@
-package es.codekai.jrgeneratorandroid.data.model
+package es.codekai.jrgeneratorandroid.data.ws.model
 
 import com.google.gson.annotations.SerializedName
 

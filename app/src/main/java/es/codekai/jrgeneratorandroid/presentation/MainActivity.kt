@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import es.codekai.jrgeneratorandroid.databinding.ActivityMainBinding
 
